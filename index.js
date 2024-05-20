@@ -14,14 +14,14 @@ const app=express();
 const __filename=fileURLToPath(import.meta.url)
 const __dirname=path.dirname(__filename)
 
-const isUrlValid=(url)=>{
-  try{
-    new URL(url);
-return true;
-  }catch(error){
-return false;
-  }
-}
+// const isUrlValid=(url)=>{
+//   try{
+//     new URL(url);
+// return true;
+//   }catch(error){
+// return false;
+//   }
+// }
 
 app.use(express.json())
 
@@ -33,13 +33,13 @@ app.get("/",(req,res)=>{
 
 app.post("/urls",(req,res)=>{
 
-  if(!isUrlValid(req.body.url)){
-     return res.status(400).json({
-        success:false,
-        message:"invalid url"
-      })
-  }
-  else{
+  // if(!isUrlValid(req.body.url)){
+  //    return res.status(400).json({
+  //       success:false,
+  //       message:"invalid url"
+  //     })
+  // }
+  // else{
     
     // console.log(req.body.url);
     
@@ -59,10 +59,9 @@ app.post("/urls",(req,res)=>{
     
     res.json({
       success:true,
-      messege:"Dummy data",
       url:`http://localhost:8080/${shortUrl}`
     })
-  }
+  // }
   })
   
 app.get("/:shortUrl",(req,res)=>{
